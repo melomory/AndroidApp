@@ -1,0 +1,22 @@
+# Gradle files
+.gradle
+/build
+
+# Local configuration files
+/local.properties
+local.properties
+
+# IOS files
+.DS_Store
+
+# Android Studio files
+*.iml
+.idea/
+/captures
+
+# NDK
+.externalNativeBuild
+
+# C/C++ files
+.cxx
+
