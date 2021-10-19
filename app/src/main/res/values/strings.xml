@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">AndroidApp</string>
+    <string name="contact_list">Список контактов</string>
+    <string name="contact_details">Детали контакта</string>
+    <string name="contact_list_phone_number">+7-(495)-098-61-22</string>
+    <string name="contact_list_name">Name</string>
+    <string name="contact_details_description">Описание контакта</string>
+    <string name="contact_details_name">Name</string>
+    <string name="contact_details_phone_number_1">Телефон #1:</string>
+    <string name="contact_details_phone_number_2">Телефон #2:</string>
+    <string name="contact_details_email_1">E-mail #1:</string>
+    <string name="contact_details_email_2">E-mail #2:</string>
+    <string name="contact_details_phone_number_1_example">+7-(495)-098-61-22</string>
+    <string name="contact_details_phone_number_2_example">+7-(495)-098-61-54</string>
+    <string name="contact_details_email_1_example">one@example.com</string>
+    <string name="contact_details_email_2_example">two@example.com</string>
 </resources>
