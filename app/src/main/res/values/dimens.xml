@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_view_margin_start">16dp</dimen>
+
+    <dimen name="contact_list_avatar_width">100dp</dimen>
+    <dimen name="contact_list_avatar_height">100dp</dimen>
+    <dimen name="contact_list_avatar_margin_top">8dp</dimen>
+    <dimen name="contact_list_avatar_margin_bottom">8dp</dimen>
+    <dimen name="contact_list_avatar_margin_start">16dp</dimen>
+    <dimen name="contact_list_name_margin_top">16dp</dimen>
+    <dimen name="contact_list_contact_phone_number_margin_top">8dp</dimen>
+
+    <dimen name="contact_details_avatar_width">150dp</dimen>
+    <dimen name="contact_details_avatar_height">150dp</dimen>
+    <dimen name="contact_details_avatar_margin_start">8dp</dimen>
+    <dimen name="contact_details_avatar_margin_top">8dp</dimen>
+    <dimen name="contact_details_text_view_margin_top">16dp</dimen>
+</resources>
