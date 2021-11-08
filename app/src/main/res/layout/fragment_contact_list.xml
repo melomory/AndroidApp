@@ -14,13 +14,12 @@
         android:id="@+id/contactImage"
         android:layout_width="@dimen/contact_list_avatar_width"
         android:layout_height="@dimen/contact_list_avatar_height"
-        android:layout_marginStart="@dimen/contact_list_avatar_margin_start"
-        android:layout_marginTop="@dimen/contact_list_avatar_margin_top"
-        android:layout_marginBottom="@dimen/contact_list_avatar_margin_bottom"
+        android:layout_marginStart="@dimen/large_horizontal_margin"
+        android:layout_marginTop="@dimen/normal_vertical_margin"
+        android:layout_marginBottom="@dimen/normal_vertical_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/android_logo_icon"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -28,9 +27,8 @@
         style="@style/nameTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/text_view_margin_start"
-        android:layout_marginTop="@dimen/contact_list_name_margin_top"
-        android:text="@string/contact_list_name"
+        android:layout_marginStart="@dimen/large_horizontal_margin"
+        android:layout_marginTop="@dimen/large_vertical_margin"
         app:layout_constraintStart_toEndOf="@+id/contactImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,9 +37,8 @@
         style="@style/otherTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/text_view_margin_start"
-        android:layout_marginTop="@dimen/contact_list_contact_phone_number_margin_top"
-        android:text="@string/contact_list_phone_number"
+        android:layout_marginStart="@dimen/large_horizontal_margin"
+        android:layout_marginTop="@dimen/normal_vertical_margin"
         app:layout_constraintStart_toEndOf="@+id/contactImage"
         app:layout_constraintTop_toBottomOf="@+id/contactName" />
 
