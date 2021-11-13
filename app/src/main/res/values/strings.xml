@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AndroidApp</string>
+    <string name="app_notification_channel_description">AndroidApp notification channel</string>
     <string name="contact_list">Список контактов</string>
     <string name="contact_details">Детали контакта</string>
     <string name="contact_list_phone_number">+7-(495)-098-61-22</string>
@@ -14,4 +15,7 @@
     <string name="contact_details_phone_number_2_example">+7-(495)-098-61-54</string>
     <string name="contact_details_email_1_example">one@example.com</string>
     <string name="contact_details_email_2_example">two@example.com</string>
+    <string name="contact_birthday">День рождения:</string>
+    <string name="contact_birthday_reminder">Напоминание о дне рождения</string>
+    <string name="notification_message">Сегодня день рождения у</string>
 </resources>

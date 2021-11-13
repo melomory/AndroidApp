@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.gmail.niko.den.vl.databinding.FragmentContactListBinding
@@ -42,9 +43,9 @@ class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
 
     private fun populateContactList() {
         viewBinding?.apply {
-            contactImage.setImageResource(R.drawable.android_logo_icon)
+            contactImage.setImageURI(contactList?.get(0)?.avatarUri?.toUri())
             contactName.text = contactList?.get(0)?.name
-            contactPhoneNumber.text = contactList?.get(0)?.phoneNumber
+            contactPhoneNumber.text = contactList?.get(0)?.firstPhoneNumber
             contactCard.setOnClickListener {
                 contactListListener?.navigateToContactDetailsFragment(
                     contactList?.get(0)?.contactId.toString()

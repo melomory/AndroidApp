@@ -1,16 +1,22 @@
 package com.gmail.niko.den.vl
 
+//import android.app.TimePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.gmail.niko.den.vl.databinding.FragmentContactDetailsBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Фрагмент с детальной информацией о контакте
@@ -20,6 +26,7 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
     private var contactListServiceListener: ContactListServiceListener? = null
     private var contact: Contact? = null
     private var viewBinding: FragmentContactDetailsBinding? = null
+    private var alarmAssistant: AlarmAssistant? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -45,21 +52,58 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
 
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.contact_details)
+        alarmAssistant = AlarmAssistant(context)
     }
 
     private fun populateContactDetails() {
         viewBinding?.apply {
-            contactImage.setImageResource(R.drawable.android_logo_icon)
-            contactName.text = contact?.name
-            contactPhoneNumber1.text = contact?.phoneNumber
-            contactPhoneNumber2.text = getString(R.string.contact_details_phone_number_2_example)
-            contactEmail1.text = getString(R.string.contact_details_email_1_example)
-            contactEmail2.text = getString(R.string.contact_details_email_2_example)
-            contactDescription.text = getString(R.string.contact_details_description)
+
+            contact?.let { contact ->
+                contactImage.setImageURI(contact.avatarUri.toUri())
+                contactName.text = contact.name
+                contactPhoneNumber1.text = contact.firstPhoneNumber
+                contactPhoneNumber2.text = contact.secondPhoneNumber
+                contactEmail1.text = contact.firstEmailAddress
+                contactEmail2.text = contact.secondEmailAddress
+                contactBirthdayDate.text = getFormattedDate(contact.birthday)
+                contactDescription.text = contact.description
+                birthdayReminderSwitch.isVisible = true
+                alarmAssistant?.let { alarmAssistant ->
+                    birthdayReminderSwitch.isChecked = alarmAssistant.isAlarmUp(contact.contactId)
+                }
+
+                birthdayReminderSwitch.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+//                        val calendar = GregorianCalendar.getInstance().apply {
+//                            TimePickerDialog(
+//                                activity,
+//                                0,
+//                                { _, hour, min ->
+//                                    this.set(GregorianCalendar.HOUR_OF_DAY, hour)
+//                                    this.set(GregorianCalendar.MINUTE, min)
+//                                },
+//                                this.get(GregorianCalendar.HOUR_OF_DAY),
+//                                this.get(GregorianCalendar.MINUTE),
+//                                true
+//                            ).show()
+//                        }
+                        alarmAssistant?.scheduleBirthdayAlarm(contact)
+                    } else {
+                        alarmAssistant?.cancelAlarm(contact)
+                    }
+                }
+            }
         }
     }
 
+    private fun getFormattedDate(calendar: GregorianCalendar): String {
+        val formatter = SimpleDateFormat("dd MMM")
+        formatter.calendar = calendar
+        return formatter.format(calendar.time)
+    }
+
     override fun onDestroyView() {
+        alarmAssistant = null
         viewBinding = null
         super.onDestroyView()
     }
