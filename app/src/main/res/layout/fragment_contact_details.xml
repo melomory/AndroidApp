@@ -25,7 +25,8 @@
         android:layout_marginTop="@dimen/large_vertical_margin"
         style="@style/nameTextStyle"
         app:layout_constraintStart_toEndOf="@+id/contactImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/contact_details_name"/>
 
     <TextView
         android:id="@+id/contactPhoneNumber1Label"
@@ -57,7 +58,8 @@
         android:layout_marginTop="@dimen/large_vertical_margin"
         style="@style/otherTextStyle"
         app:layout_constraintStart_toEndOf="@+id/contactPhoneNumber1Label"
-        app:layout_constraintTop_toBottomOf="@+id/contactImage" />
+        app:layout_constraintTop_toBottomOf="@+id/contactImage"
+        tools:text="@string/contact_details_phone_number_1_example" />
 
     <TextView
         android:id="@+id/contactPhoneNumber2"
@@ -67,7 +69,8 @@
         android:layout_marginTop="@dimen/large_vertical_margin"
         style="@style/otherTextStyle"
         app:layout_constraintStart_toEndOf="@+id/contactPhoneNumber2Label"
-        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumber1" />
+        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumber1"
+        tools:text="@string/contact_details_phone_number_2_example" />
 
     <TextView
         android:id="@+id/contactEmail1Label"
@@ -78,7 +81,7 @@
         style="@style/otherTextStyle"
         android:text="@string/contact_details_email_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumber2Label" />
 
     <TextView
         android:id="@+id/contactEmail1"
@@ -88,7 +91,8 @@
         android:layout_marginTop="@dimen/large_vertical_margin"
         style="@style/otherTextStyle"
         app:layout_constraintStart_toEndOf="@+id/contactEmail1Label"
-        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumber2"
+        tools:text="@string/contact_details_email_1_example" />
 
     <TextView
         android:id="@+id/contactEmail2Label"
@@ -109,7 +113,43 @@
         android:layout_marginTop="@dimen/large_vertical_margin"
         style="@style/otherTextStyle"
         app:layout_constraintStart_toEndOf="@+id/contactEmail2Label"
-        app:layout_constraintTop_toBottomOf="@+id/contactEmail1" />
+        app:layout_constraintTop_toBottomOf="@+id/contactEmail1"
+        tools:text="@string/contact_details_email_2_example"/>
+
+    <TextView
+        android:id="@+id/contactBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_horizontal_margin"
+        android:layout_marginTop="@dimen/large_vertical_margin"
+        style="@style/otherTextStyle"
+        android:text="@string/contact_birthday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactEmail2Label" />
+
+    <TextView
+        android:id="@+id/contactBirthdayDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_horizontal_margin"
+        android:layout_marginTop="@dimen/large_vertical_margin"
+        style="@style/otherTextStyle"
+        tools:text="@string/contact_birthday"
+        app:layout_constraintStart_toEndOf="@id/contactBirthday"
+        app:layout_constraintTop_toBottomOf="@+id/contactEmail2" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/birthdayReminderSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_horizontal_margin"
+        android:layout_marginTop="@dimen/large_vertical_margin"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        style="@style/otherTextStyle"
+        android:text="@string/contact_birthday_reminder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactBirthday" />
 
     <TextView
         android:id="@+id/contactDescription"
@@ -119,5 +159,6 @@
         android:layout_marginTop="@dimen/large_vertical_margin"
         style="@style/otherTextStyle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactEmail2Label" />
+        app:layout_constraintTop_toBottomOf="@+id/birthdayReminderSwitch"
+        tools:text="@string/contact_details_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>

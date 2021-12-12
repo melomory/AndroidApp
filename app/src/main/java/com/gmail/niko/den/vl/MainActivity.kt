@@ -1,11 +1,13 @@
 package com.gmail.niko.den.vl
 
+import android.app.NotificationManager
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), ContactListListener, ContactListServiceListener {
@@ -26,6 +28,10 @@ class MainActivity : AppCompatActivity(), ContactListListener, ContactListServic
                 isBound = true
                 if ( savedInstanceState == null) {
                     navigateToContactListFragment()
+                    val contactId = intent.getStringExtra("CONTACT_ID")
+                    contactId?.let {
+                        navigateToContactDetailsFragment(contactId)
+                    }
                 }
             }
 
@@ -36,7 +42,16 @@ class MainActivity : AppCompatActivity(), ContactListListener, ContactListServic
         }
 
         val intent = Intent(this, GetContactListService::class.java)
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+        bindService(intent, serviceConnection, BIND_AUTO_CREATE)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            NotificationAssistant.createNotificationChannel(
+                this,
+                NotificationManager.IMPORTANCE_DEFAULT,
+                getString(R.string.app_name),
+                getString(R.string.app_notification_channel_description)
+            )
+        }
     }
 
     override fun navigateToContactListFragment() {
